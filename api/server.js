@@ -20,6 +20,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+app.get('/',(req,res)=>{
+  res.send("hello world")
+})
+
 app.post("/pic", upload.single("picture"),(req,res)=>{
   const {name,price,category,description} = req.body
   
@@ -50,6 +54,7 @@ const connecttomongo = require('./db')
 connecttomongo()
 
 //Routes
+
 const auth = require('./routes/auth.js')
 app.use('/ap', auth)
 
